@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,9 +51,9 @@ nav.scrolled{background:rgba(247,243,238,0.96);backdrop-filter:blur(12px);border
 .btn-gold:hover{background:var(--gold2)}
 .btn-outline{background:transparent;color:var(--cream);border:1px solid rgba(247,243,238,0.3);padding:14px 32px;font-size:11px;cursor:pointer;font-family:'Jost',sans-serif;transition:all 0.3s;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;display:inline-block}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.hero-right{position:relative;overflow:hidden}
-.hero-right video{width:100%;height:100%;object-fit:cover}
-.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--dark) 0%,transparent 30%)}
+.hero-right{position:relative;overflow:hidden;background:var(--dark)}
+.hero-right video{width:100%;height:100%;object-fit:cover;display:block}
+.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--dark) 0%,transparent 30%);pointer-events:none}
 .hero-scroll{position:absolute;bottom:3rem;left:4rem;display:flex;align-items:center;gap:12px;color:rgba(247,243,238,0.4);font-size:10px;letter-spacing:0.2em;text-transform:uppercase}
 .hero-scroll::after{content:'';width:48px;height:1px;background:rgba(247,243,238,0.2)}
 
@@ -258,7 +250,7 @@ footer{background:var(--dark);padding:3rem 5rem;display:grid;grid-template-colum
     <div class="hero-scroll">Discover</div>
   </div>
   <div class="hero-right">
-    <video autoplay muted loop playsinline src="https://github.com/hadrienzervas/EstateReel/blob/main/Property_Tour_Crossfade.mp4"></video>
+    <video autoplay muted loop playsinline src="Property_Tour_Crossfade.mp4"></video>
   </div>
 </div>
 
@@ -296,12 +288,12 @@ footer{background:var(--dark);padding:3rem 5rem;display:grid;grid-template-colum
   <h2 class="reveal">AI Generated<br><em>Room Showcase</em></h2>
   <p class="sec-sub reveal">This full walkthrough video is entirely AI generated — created from room photos with no camera crew or on-site visit. Every room animated using artificial intelligence, assembled with smooth transitions and delivered as one cinematic property tour.</p>
   <div class="tour-wrap" style="opacity:1;transform:none;min-height:450px">
-    <video id="<video id="tourVideo"
-  src="https://github.com/hadrienzervas/EstateReel/blob/main/Property_Tour_Crossfade.mp4"
-  style="width:100%;display:block;max-height:600px;object-fit:cover"
-  preload="metadata"
-  playsinline>
-</video>
+    <video id="tourVideo"
+      src="Property_Tour_Crossfade.mp4"
+      style="width:100%;display:block;max-height:600px;object-fit:cover"
+      preload="metadata"
+      playsinline>
+    </video>
     <div class="tour-overlay" id="tourOverlay" onclick="playTour()" style="position:absolute;inset:0;z-index:2">
       <div style="display:flex;flex-direction:column;align-items:center;gap:1rem">
         <div class="tour-play">▶</div>
@@ -454,7 +446,6 @@ footer{background:var(--dark);padding:3rem 5rem;display:grid;grid-template-colum
         <ul class="plist">
           <li>Up to 8 room clips</li>
           <li>Full combined walkthrough video</li>
-          
           <li>48 hour delivery</li>
         </ul>
         <button class="pbtn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
@@ -502,7 +493,7 @@ footer{background:var(--dark);padding:3rem 5rem;display:grid;grid-template-colum
     <div class="step">
       <div class="step-n">02</div>
       <div class="step-t">AI generates the video clips</div>
-      <div class="step-d">We use the latest artificial intelligence video models — the latest artificial intelligence models — to transform each room photo into a smooth, photorealistic cinematic video clip. The AI animates the space with natural camera movement, realistic lighting and depth — all without ever setting foot in the property.</div>
+      <div class="step-d">We use the latest artificial intelligence video models to transform each room photo into a smooth, photorealistic cinematic video clip. The AI animates the space with natural camera movement, realistic lighting and depth — all without ever setting foot in the property.</div>
     </div>
     <div class="step">
       <div class="step-n">03</div>
@@ -525,7 +516,6 @@ footer{background:var(--dark);padding:3rem 5rem;display:grid;grid-template-colum
   </div>
 </section>
 
-<!-- Banner -->
 <!-- AI Renovation Section -->
 <div id="renovation" style="background:var(--cream2);padding:7rem 5rem;border-top:1px solid var(--border)">
   <div style="max-width:1300px;margin:0 auto">
@@ -704,7 +694,6 @@ function tapPlay(card){
   const v=card.querySelector('.room-video');
   const p=card.querySelector('.room-play');
   if(v.paused){
-    // pause all others first
     document.querySelectorAll('.room-video').forEach(ov=>{
       if(ov!==v){ov.pause();ov.currentTime=0;ov.closest('.room-card').querySelector('.room-play').style.opacity='1';}
     });
@@ -716,18 +705,18 @@ function tapPlay(card){
     p.style.opacity='1';
   }
 }
-// Add tap handler for mobile
 document.querySelectorAll('.room-card').forEach(card=>{
   card.addEventListener('click',()=>tapPlay(card));
 });
 function playTour(){
   const v=document.getElementById('tourVideo');
   const o=document.getElementById('tourOverlay');
-  if(v.paused){v.play();o.style.opacity='0';}
-  else{v.pause();o.style.opacity='1';}
+  if(v.paused){v.play();o.style.opacity='0';o.style.pointerEvents='none';}
+  else{v.pause();o.style.opacity='1';o.style.pointerEvents='auto';}
 }
 document.getElementById('tourVideo').addEventListener('ended',()=>{
   document.getElementById('tourOverlay').style.opacity='1';
+  document.getElementById('tourOverlay').style.pointerEvents='auto';
 });
 async function submitForm(e){
   e.preventDefault();
@@ -754,4 +743,3 @@ async function submitForm(e){
 </script>
 </body>
 </html>
-f
