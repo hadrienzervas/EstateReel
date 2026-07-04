@@ -140,6 +140,8 @@ h2 em{font-style:italic;color:var(--gold)}
 .pricing-section .sec-sub{color:rgba(247,243,238,0.5)}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(184,150,90,0.15);border:1px solid rgba(184,150,90,0.15);margin-top:3rem}
 .plans-2col{grid-template-columns:repeat(2,1fr);max-width:640px;margin-left:auto;margin-right:auto}
+.airbnb-free-note{text-align:center;margin-top:2rem;font-size:12px;color:rgba(247,243,238,0.55);letter-spacing:0.03em}
+.airbnb-free-note em{color:var(--gold2);font-style:italic}
 .plan{background:var(--dark2);padding:2.5rem;transition:background 0.3s}
 .plan:hover{background:var(--dark3)}
 .plan.feat{background:var(--dark3);border-top:2px solid var(--gold)}
@@ -564,13 +566,13 @@ footer{background:var(--dark);padding:3rem 5rem;display:grid;grid-template-colum
   <div class="rooms-grid reveal">
     <div class="room-card" onmouseenter="hoverPlay(this)" onmouseleave="hoverPause(this)">
       <div class="room-video-wrap vertical">
-        <video class="room-video" src="https://hadrienzervas.github.io/EstateReel/Glide_through_balcony_view_202606082306.mp4" muted loop playsinline preload="none"></video>
+        <video class="room-video" src="https://raw.githubusercontent.com/hadrienzervas/EstateReel/main/property_tour_tiktok.mp4" muted loop playsinline preload="none"></video>
         <div class="room-play"><div class="room-play-btn">&#9654;</div></div>
       </div>
       <div class="room-info">
-        <div class="room-name">Terrace &amp; Views</div>
+        <div class="room-name">Full Video</div>
         <div class="room-dur">Cinematic Clip</div>
-        <div class="room-tags"><span class="rtag">Golden Hour</span><span class="rtag">9:16</span></div>
+        <div class="room-tags"><span class="rtag">Full Walkthrough</span><span class="rtag">9:16</span></div>
       </div>
     </div>
     <div class="room-card" onmouseenter="hoverPlay(this)" onmouseleave="hoverPause(this)">
@@ -655,6 +657,7 @@ footer{background:var(--dark);padding:3rem 5rem;display:grid;grid-template-colum
         <button class="pbtn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
       </div>
     </div>
+    <p class="airbnb-free-note reveal">Your first clip is <em>completely free</em> — see the quality before you commit to a package.</p>
   </div>
 </div>
 
